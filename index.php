@@ -88,7 +88,7 @@
 				    <img src="kirito.jpg" class="card-img-top" alt="...">
 				    <div class="card-body">
 				      <h5 class="card-title">Kazuto Kirigaya</h5>
-				      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				      <p class="card-text">Most overpowered protagonist ever created.</p>
 				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 				    </div>
 				  </div>
@@ -96,7 +96,7 @@
 				    <img src="alice.jpg" class="card-img-top" alt="...">
 				    <div class="card-body">
 				      <h5 class="card-title">Alice Synthesis Thirty</h5>
-				      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+				      <p class="card-text">Best waifu ever created.</p>
 				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 				    </div>
 				  </div>
@@ -104,7 +104,7 @@
 				    <img src="asuna.jpg" class="card-img-top" alt="...">
 				    <div class="card-body">
 				      <h5 class="card-title">Asuna Yuuki</h5>
-				      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+				      <p class="card-text">Just a cute girl.</p>
 				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 				    </div>
 				  </div>
@@ -117,7 +117,7 @@
 				<div class="card mb-14">
   					<div class="card-header">
    					 Lista de usuarios registrados
-   					 <button type="button" class="btn btn-primary float-right">Añadir Usuario</button>
+   					 <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn-primary float-right">Añadir Usuario</button>
   					</div>
   					<div class="card-body">
    						<table class="table table-striped table-bordered">
@@ -185,6 +185,25 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
 </div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	
