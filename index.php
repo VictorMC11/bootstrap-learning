@@ -33,11 +33,13 @@
     			</form>
   			</div>
 		</nav>
+		
 		<nav aria-label="breadcrumb">
   			<ol class="breadcrumb">
     			<li class="breadcrumb-item active" aria-current="page">Inicio</li>
   			</ol>
 		</nav>
+		
 		<div class="jumbotron">
 		  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
 			  <ol class="carousel-indicators">
@@ -78,29 +80,30 @@
 			  </a>
 			</div>
 		</div>
+		
 		<div class="row">
 			<div class="col-12">
 				<div class="card-deck">
-				  	<div class="card">
+				  	<div class="card mb-4">
 				    <img src="kirito.jpg" class="card-img-top" alt="...">
 				    <div class="card-body">
-				      <h5 class="card-title">Card title</h5>
+				      <h5 class="card-title">Kazuto Kirigaya</h5>
 				      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 				    </div>
 				  </div>
-				  <div class="card">
+				  <div class="card mb-4">
 				    <img src="alice.jpg" class="card-img-top" alt="...">
 				    <div class="card-body">
-				      <h5 class="card-title">Card title</h5>
+				      <h5 class="card-title">Alice Synthesis Thirty</h5>
 				      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
 				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 				    </div>
 				  </div>
-				  <div class="card">
+				  <div class="card mb-4">
 				    <img src="asuna.jpg" class="card-img-top" alt="...">
 				    <div class="card-body">
-				      <h5 class="card-title">Card title</h5>
+				      <h5 class="card-title">Asuna Yuuki</h5>
 				      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
 				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 				    </div>
@@ -108,6 +111,50 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="col-12">
+				<div class="card mb-14">
+  					<div class="card-header">
+   					 Lista de usuarios registrados
+   					 <button type="button" class="btn btn-primary float-right">Añadir Usuario</button>
+  					</div>
+  					<div class="card-body">
+   						<table class="table table-striped table-bordered">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th scope="col">#</th>
+						      <th scope="col">First</th>
+						      <th scope="col">Last</th>
+						      <th scope="col">Handle</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <th scope="row">1</th>
+						      <td>Mark</td>
+						      <td>Otto</td>
+						      <td>@mdo</td>
+						    </tr>
+						    <tr>
+						      <th scope="row">2</th>
+						      <td>Jacob</td>
+						      <td>Thornton</td>
+						      <td>@fat</td>
+						    </tr>
+						    <tr>
+						      <th scope="row">3</th>
+						      <td>Larry</td>
+						      <td>the Bird</td>
+						      <td>@twitter</td>
+						    </tr>
+						  </tbody>
+						</table>
+  					</div>
+				</div>
+			</div>
+		</div>
+		
 		<div class="row">
 			<div class="col-sm">
 				<h1>
