@@ -197,7 +197,7 @@
          		<span aria-hidden="true">&times;</span>
        	 	</button>
      	 	</div>
-     	 	<form>
+     	 	<form onsubmit="return validateRegister()">
 	     		<div class="modal-body">
 	       			<div class="form-group">
 					    <label for="name">Nombre completo</label>
@@ -206,18 +206,39 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i>
     						</span>
   							</div>
-  						<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+  						<input type="text" class="form-control" id="name" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					  </div>
 					  <div class="form-group">
-					    <label for="exampleInputPassword1">Password</label>
-					    <input type="password" class="form-control" id="exampleInputPassword1">
+					    <label for="name">Correo Electronico</label>
+					    <div class="input-group mb-3">
+  							<div class="input-group-prepend">
+    						<span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i>
+    						</span>
+  							</div>
+  						<input type="text" class="form-control" id="email" placeholder="example@hotmail.com" aria-label="correo" aria-describedby="basic-addon1">
+						</div>
 					  </div>
-					  <div class="form-group form-check">
-					    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+					  <div class="form-group">
+					    <label for="name">Contraseña</label>
+					    <div class="input-group mb-3">
+  							<div class="input-group-prepend">
+    						<span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i>
+    						</span>
+  							</div>
+  						<input type="password" class="form-control" id="pass1"placeholder="*******" aria-label="pass" aria-describedby="basic-addon1">
+						</div>
 					  </div>
- 					<button type="submit" class="btn btn-primary">Submit</button>
+					   <div class="form-group">
+					    <label for="name">Confirmar contraseña</label>
+					    <div class="input-group mb-3">
+  							<div class="input-group-prepend">
+    						<span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i>
+    						</span>
+  							</div>
+  						<input type="password" class="form-control" id="pass2"placeholder="*******" aria-label="pass2" aria-describedby="basic-addon1">
+						</div>
+					  </div>		 
 	      		</div>
 	     		<div class="modal-footer">
 	       			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -232,6 +253,22 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script type="text/javascript">
+		function validateRegister(){
+			if($("#pass1").val() == $("#pass2").val()){
+				return true;
+			}else{
+				$("#pass1").addClass('is-invalid');
+				$("#pass2").addClass('is-invalid');
+				swal("Contraseña erronea", "Vuelva a escribir su contraseña", "error");
+
+				return false;
+			}
+		}
+	</script>
 
 </body>
 
