@@ -216,7 +216,7 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i>
     						</span>
   							</div>
-  						<input type="text" class="form-control" id="email" placeholder="example@hotmail.com" aria-label="correo" aria-describedby="basic-addon1">
+  						<input type="email" class="form-control" id="email" placeholder="example@hotmail.com" aria-label="correo" aria-describedby="basic-addon1">
 						</div>
 					  </div>
 					  <div class="form-group">
