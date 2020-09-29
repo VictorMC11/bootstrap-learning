@@ -6,7 +6,7 @@
 	<title>Bootstrap</title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<link rel="stylesheet" href="assets/font-awesome-4.7.0">
+	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
 
 
 </head>
@@ -201,8 +201,13 @@
 	     		<div class="modal-body">
 	       			<div class="form-group">
 					    <label for="name">Nombre completo</label>
-					    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-					    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					    <div class="input-group mb-3">
+  							<div class="input-group-prepend">
+    						<span class="input-group-text" id="basic-addon1"></span>
+    						<i class="fa fa-user"></i>
+  							</div>
+  						<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+						</div>
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputPassword1">Password</label>
