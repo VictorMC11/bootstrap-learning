@@ -1,6 +1,6 @@
 <?php
-	include "controlers/userController.php";
-	$userController = new userController();
+	include "controlers/UserController.php";
+	$userController = new UserController();
 	$users = $userController->get();
 	echo json_encode($users);
 ?>
