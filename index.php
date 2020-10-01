@@ -1,3 +1,10 @@
+<?php
+	include "controlers/userController.php";
+	$userController = new userController();
+	$users = $userController->get();
+	echo json_encode($users);
+?>
+
 <!DOCTYPE html>
 <html>
 
