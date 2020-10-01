@@ -18,8 +18,6 @@
     			if($users){
     				return $users;
     			}
-
-    			return $users;
     		}
     	}
     }
