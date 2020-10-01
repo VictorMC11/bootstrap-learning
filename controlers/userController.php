@@ -8,11 +8,11 @@
     		$con = connect();
     		if($con->connect_error){
 
-    			$query = "SELECT * FROM users";
+    			$query = "select * from users";
     			$prepared_query = $con->prepare($query);
     			$prepared_query->execute();
 
-    			$status = $prepared_query->get_result();
+    			$results = $prepared_query->get_result();
     			$users = $results->fetch_all(MYSQL_ASSOC);
 
     			if($users){
