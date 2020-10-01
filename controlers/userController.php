@@ -13,7 +13,7 @@
     			$prepared_query->execute();
 
     			$results = $prepared_query->get_result();
-    			$users = $results->fetch_all(MYSQL_ASSOC);
+    			$users = $results->fetch_all(MYSQLI_ASSOC);
 
     			if($users){
     				return $users;
