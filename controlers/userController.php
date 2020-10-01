@@ -3,7 +3,7 @@
     include_once "config.php";
     include_once "connectionController.php";
 
-    Class userController{
+    Class UserController{
     	function get(){
     		$con = connect();
     		if($con->connect_error){
