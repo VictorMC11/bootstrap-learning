@@ -126,29 +126,22 @@
 						  <thead class="thead-dark">
 						    <tr>
 						      <th scope="col">#</th>
-						      <th scope="col">First</th>
-						      <th scope="col">Last</th>
-						      <th scope="col">Handle</th>
+						      <th scope="col">Nombre</th>
+						      <th scope="col">Correo Electronico</th>
+						      <th scope="col">Estatus</th>
+						      <th scope="col">Acciones</th>
 						    </tr>
 						  </thead>
 						  <tbody>
 						    <tr>
 						      <th scope="row">1</th>
 						      <td>Mark</td>
-						      <td>Otto</td>
+						      <td>Otto@example.com</td>
 						      <td>@mdo</td>
-						    </tr>
-						    <tr>
-						      <th scope="row">2</th>
-						      <td>Jacob</td>
-						      <td>Thornton</td>
-						      <td>@fat</td>
-						    </tr>
-						    <tr>
-						      <th scope="row">3</th>
-						      <td>Larry</td>
-						      <td>the Bird</td>
-						      <td>@twitter</td>
+						      <td>
+						      	<button type="button" class="btn btn-warning"><i class="fa fa-pencil">Editar</i></button>
+						      	<button onclick="remove(1)" type="button" class="btn btn-danger"><i class="fa fa-trash">Eliminar</i></button>
+						      </td>
 						    </tr>
 						  </tbody>
 						</table>
@@ -267,6 +260,23 @@
 
 				return false;
 			}
+		}
+		function remove(id){
+			swal({
+			  title: "¿Estas seguro?",
+			  text: "Una vez eliminado, ya no podrá recuperarlo.",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			  buttons:["Cancelar", "Eliminar"],
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			    swal("¡Ha sido eliminado con éxito!", {
+			      icon: "success",
+			    });
+			  }
+			});
 		}
 	</script>
 
