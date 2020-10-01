@@ -17,8 +17,11 @@
 
     			if($users){
     				return $users;
-    			}
-    		}
+    			}else{
+                    return array();
+                }
+    		}else
+                return array();
     	}
     }
     
