@@ -4,23 +4,33 @@
     include_once "connectionController.php";
 
     Class UserController{
-    	function get(){
-    		$con = connect();
-    		if(!$con->connect_error){
+        
+        function get(){
+            $con = connect();
+            if(!$con->connect_error){
 
-    			$query = "select * from users";
-    			$prepared_query = $con->prepare($query);
-    			$prepared_query->execute();
+                $query = "select * from users";
+                $prepared_query = $con->prepare($query);
+                $prepared_query->execute();
 
-    			$results = $prepared_query->get_result();
-    			$users = $results->fetch_all(MYSQLI_ASSOC);
-    			if($users){
-    				return $users;
-    			}else{
+                $results = $prepared_query->get_result();
+                $users = $results->fetch_all(MYSQLI_ASSOC);
+                if($users){
+                    return $users;
+                }else{
                     return array();
                 }
-    		}else
+            }else
                 return array();
-    	}
-    }
+        }
+        public function store($name, $email, $password){
+            $con = connect();
+            if(!$con->connect_error){
+
+
+            }else{
+                header("Location:")
+            }
+        }
+    }   
 ?>
