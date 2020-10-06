@@ -160,16 +160,38 @@
 						    </tr>
 						  </thead>
 						  <tbody>
+						  	<?php if(isset($users)&& count($users)>0): ?>
+						  	<?php foreach($users as $user): ?>
 						    <tr>
-						      <th scope="row">1</th>
-						      <td>Mark</td>
-						      <td>Otto@example.com</td>
-						      <td>@mdo</td>
+						      <th scope="row">
+						      	<?= $user['id'] ?>
+						      </th>
+						      <td>
+						      	<?= $user['nombre'] ?>
+						      </td>
+						      <td>
+						      	<a href="malito:<?=$user['email']?>">
+						      	<?= $user['correo'] ?>
+						      	</a>
+						      </td>
+						      <td>
+						      	<?php if($user['status']): ?>
+						      		<span class="badge badge-success">
+						      			Activo
+						      		</span>	
+						      	<?php else: ?>	
+						      		<span class="badge badge-warining">
+						      			Inactivo
+						      		</span>	
+						      	<?php endif ?>
+						      </td>
 						      <td>
 						      	<button type="button" class="btn btn-warning"><i class="fa fa-pencil">Editar</i></button>
 						      	<button onclick="remove(1)" type="button" class="btn btn-danger"><i class="fa fa-trash">Eliminar</i></button>
 						      </td>
 						    </tr>
+							<?php endforeach ?>
+						  	<?php endif ?>
 						  </tbody>
 						</table>
   					</div>
