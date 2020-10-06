@@ -47,12 +47,26 @@
                     $prepared_query = $con->prepare($query);
                     $prepared_query->bind_param('sss',$name,$email,$password);
                     if($prepared_query->execute()){
+                        $_SESSION['status'] = "success";
+                        $_SESSION['message'] = "El reigstro se ha guardado correctamente";
+
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    }else{
+                        $_SESSION['error'] = "success";
+                        $_SESSION['message'] = "El registro no se ha guardado.";
+
                         header('Location: ' . $_SERVER['HTTP_REFERER']);
                     }
                 }else{
+                    $_SESSION['error'] = "error";
+                    $_SESSION['message'] = "Verifique la información mandada.";
+
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
                 }
             }else{
+                $_SESSION['error'] = "success";
+                $_SESSION['message'] = "Error durante la conexión.";
+
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
 
             }
