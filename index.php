@@ -48,6 +48,26 @@
     			<li class="breadcrumb-item active" aria-current="page">Inicio</li>
   			</ol>
 		</nav>
+
+		<?php if(isset($_SESSION['status'])&&$_SESSION['status']=="success"):?>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+			  <strong>Correcto!</strong><?=$_SESSION['message']?>. 
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		<?php unset($_SESSION['status']);?>
+		<?php endif ?>
+
+		<?php if(isset($_SESSION['status'])&&$_SESSION['status']=="error"):?>
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  <strong>Error!</strong><?=$_SESSION['message']?>. 
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		<?php unset($_SESSION['status']);?>
+		<?php endif ?>
 		
 		<div class="jumbotron">
 		  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
