@@ -243,6 +243,7 @@
 	     		<div class="modal-footer">
 	       			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 	      			<button type="submit" class="btn btn-primary">Ok</button>
+	      			<input type="hidden" name="action" value="store">
 	     		</div>
     		</form>	
     	</div>
