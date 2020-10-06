@@ -28,7 +28,7 @@
             if(!$con->connect_error){
 
                 if($name!="" && $maill!="" && $password!=""){
-                    $query= "INSERT INTO users (name, email, password) VALUES (?,?,=?)";
+                    $query= "INSERT INTO users (name, email, password) VALUES (?,?,?)";
                     $prepared_query = $con->prepare($query);
                     $prepared_query->bind_param('sss',$name,$email,$password);
                     if($prepared_query>execute()){
