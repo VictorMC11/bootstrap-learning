@@ -206,7 +206,7 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i>
     						</span>
   							</div>
-  						<input type="text" class="form-control" id="name" placeholder="Username" aria-label="Username" requiered="" aria-describedby="basic-addon1">
+  						<input type="text" class="form-control" id="name" name="name" placeholder="Username" aria-label="Username" requiered="" aria-describedby="basic-addon1">
 						</div>
 					  </div>
 					  <div class="form-group">
@@ -216,7 +216,7 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i>
     						</span>
   							</div>
-  						<input type="email" class="form-control" id="email" placeholder="example@hotmail.com" required="" aria-label="correo" aria-describedby="basic-addon1">
+  						<input type="email" class="form-control" id="email" name="email" placeholder="example@hotmail.com" required="" aria-label="correo" aria-describedby="basic-addon1">
 						</div>
 					  </div>
 					  <div class="form-group">
@@ -226,7 +226,7 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i>
     						</span>
   							</div>
-  						<input type="password" class="form-control" id="pass1"placeholder="*******" required="" aria-label="pass" aria-describedby="basic-addon1">
+  						<input type="password" class="form-control" name="pass1" id="pass1"placeholder="*******" required="" aria-label="pass" aria-describedby="basic-addon1">
 						</div>
 					  </div>
 					   <div class="form-group">
