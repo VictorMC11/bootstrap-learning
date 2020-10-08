@@ -186,7 +186,7 @@
 						      	<?php endif ?>
 						      </td>
 						      <td>
-						      	<button data-info='<?=json_encode($user) ?>'data-toggle="modal" data-target="#staticBackdrop" type="button" class="btn btn-warning" onclick="editar(this)" ><i class="fa fa-pencil">Editar</i></button>
+						      	<button data-info='<?=json_encode($user) ?>'data-toggle="modal" data-target="#staticBackdrop" type="button" class="btn btn-warning" onclick="editar(this)" id="editar" ><i class="fa fa-pencil">Editar</i></button>
 						      	<button onclick="remove(1)" type="button" class="btn btn-danger"><i class="fa fa-trash">Eliminar</i></button>
 						      </td>
 						    </tr>
@@ -285,8 +285,8 @@
 	     		<div class="modal-footer">
 	       			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 	      			<button type="submit" class="btn btn-primary">Ok</button>
-	      			<input type="hidden" name="action" value="store">
-	      			<input type="hidden" name="id" value="id">
+	      			<input type="hidden" name="action" id="action" value="store">
+	      			<input type="hidden" name="id" id="id">
 	     		</div>
     		</form>	
     	</div>
@@ -337,7 +337,9 @@
 			$("#email").val(info.correo);
 			$("#pass1").val(info.password);
 			$("#pass2").val(info.password);
-			$("#id").val(id);
+			$("#id").val(info.id);
+
+			$("#action").val('update');
 		}
 
 	</script>
