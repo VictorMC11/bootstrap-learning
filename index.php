@@ -146,7 +146,7 @@
 				<div class="card mb-14">
   					<div class="card-header">
    					 Lista de usuarios registrados
-   					 <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn-primary float-right">Añadir Usuario</button>
+   					 <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn-primary float-right" onclick="add()" >Añadir Usuario</button>
   					</div>
   					<div class="card-body">
    						<table class="table table-striped table-bordered">
@@ -239,7 +239,7 @@
          		<span aria-hidden="true">&times;</span>
        	 	</button>
      	 	</div>
-     	 	<form method="POST" action="controlers/UserController.php" onsubmit="return validateRegister()">
+     	 	<form method="POST" id="myForm" action="controlers/UserController.php" onsubmit="return validateRegister()">
 	     		<div class="modal-body">
 	       			<div class="form-group">
 					    <label for="name">Nombre completo</label>
@@ -284,7 +284,7 @@
 	      		</div>
 	     		<div class="modal-footer">
 	       			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-	      			<button type="submit" class="btn btn-primary">Ok</button>
+	      			<button type="submit" class="btn btn-primary">Guardar</button>
 	      			<input type="hidden" name="action" id="action" value="store">
 	      			<input type="hidden" name="id" id="id">
 	     		</div>
@@ -340,6 +340,11 @@
 			$("#id").val(info.id);
 
 			$("#action").val('update');
+		}
+
+		function add(){
+			$("#action").val('store');
+			document.getElementById("myForm").reset(); 
 		}
 
 	</script>
