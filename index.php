@@ -186,7 +186,7 @@
 						      	<?php endif ?>
 						      </td>
 						      <td>
-						      	<button type="button" class="btn btn-warning"><i class="fa fa-pencil">Editar</i></button>
+						      	<button data-info='<?=json_encode($user) ?>'data-toggle="modal" data-target="#staticBackdrop" type="button" class="btn btn-warning" onclick="editar(this)" ><i class="fa fa-pencil">Editar</i></button>
 						      	<button onclick="remove(1)" type="button" class="btn btn-danger"><i class="fa fa-trash">Eliminar</i></button>
 						      </td>
 						    </tr>
@@ -278,7 +278,7 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i>
     						</span>
   							</div>
-  						<input type="password" class="form-control" id="pass2"placeholder="*******" aria-label="pass2" aria-describedby="basic-addon1">
+  						<input type="password" class="form-control" name="pass2" id="pass2"placeholder="*******" aria-label="pass2" aria-describedby="basic-addon1">
 						</div>
 					  </div>		 
 	      		</div>
@@ -286,6 +286,7 @@
 	       			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 	      			<button type="submit" class="btn btn-primary">Ok</button>
 	      			<input type="hidden" name="action" value="store">
+	      			<input type="hidden" name="id" value="id">
 	     		</div>
     		</form>	
     	</div>
@@ -328,6 +329,17 @@
 			  }
 			});
 		}
+
+		function editar(target){
+			var info = $(target).data('info');
+
+			$("#name").val(info.nombre);
+			$("#email").val(info.correo);
+			$("#pass1").val(info.password);
+			$("#pass2").val(info.password);
+			$("#id").val(id);
+		}
+
 	</script>
 
 </body>
