@@ -187,7 +187,7 @@
 						      </td>
 						      <td>
 						      	<button data-info='<?=json_encode($user) ?>'data-toggle="modal" data-target="#staticBackdrop" type="button" class="btn btn-warning" onclick="editar(this)" id="editar" ><i class="fa fa-pencil">Editar</i></button>
-						      	<button onclick="remove(1)" type="button" class="btn btn-danger"><i class="fa fa-trash">Eliminar</i></button>
+						      	<button onclick="remove(<?= $user['id']?>,this)" type="button" class="btn btn-danger"><i class="fa fa-trash">Eliminar</i></button>
 						      </td>
 						    </tr>
 							<?php endforeach ?>
@@ -299,7 +299,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript">
 		function validateRegister(){
 			if($("#pass1").val() == $("#pass2").val()){
@@ -308,24 +308,46 @@
 				$("#pass1").addClass('is-invalid');
 				$("#pass2").addClass('is-invalid');
 				swal("Contraseña erronea", "Vuelva a escribir su contraseña", "error");
+				console.log($("pass1").val());
+				console.log($("pass2").val());
 
 				return false;
 			}
 		}
-		function remove(id){
+		
+		function remove(id, target) {
 			swal({
-			  title: "¿Estas seguro?",
-			  text: "Una vez eliminado, ya no podrá recuperarlo.",
+			  title: "¿Esta seguro de eliminar el usuario?",
+			  text: "Una vez eliminado no podrá recuperarlo.",
 			  icon: "warning",
 			  buttons: true,
 			  dangerMode: true,
-			  buttons:["Cancelar", "Eliminar"],
+			  buttons: ["Cancelar", "Eliminar"]
 			})
 			.then((willDelete) => {
 			  if (willDelete) {
-			    swal("¡Ha sido eliminado con éxito!", {
-			      icon: "success",
-			    });
+
+				$.ajax ({
+					url: "controlers/UserController.php",
+					type: "POST",
+					dataType: "text",
+					data: {action: "remove", user_id: id},
+					success: function(json) {
+						console.log(json);
+
+						swal("Tu usuario ha sido eliminado.", {
+					    	icon: "success",
+					    });
+					    $(target).parent().parent().remove();
+					},
+					error: function(xhr, status) {
+						console.log(xhr);
+						console.log(status);
+					}
+				});
+
+			  } else {
+			    swal("Tu usuario no ha sido eliminado.");
 			  }
 			});
 		}
