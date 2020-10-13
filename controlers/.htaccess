@@ -1,0 +1,3 @@
+Option +FollowSymLinks
+RewriteEngine on
+Rewrite ^users$	controlers/UserController.php
