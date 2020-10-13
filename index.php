@@ -239,7 +239,11 @@
          		<span aria-hidden="true">&times;</span>
        	 	</button>
      	 	</div>
+<<<<<<< HEAD
      	 	<form method="POST" id="myForm" action="users" onsubmit="return validateRegister()">
+=======
+     	 	<form method="POST" id="myForm" action="controlers/UserController.php" onsubmit="return validateRegister()">
+>>>>>>> 71ccd530bbffe79d397c55a738806da5f65fe25b
 	     		<div class="modal-body">
 	       			<div class="form-group">
 					    <label for="name">Nombre completo</label>
@@ -287,7 +291,10 @@
 	      			<button type="submit" class="btn btn-primary">Guardar</button>
 	      			<input type="hidden" name="action" id="action" value="store">
 	      			<input type="hidden" name="id" id="id">
+<<<<<<< HEAD
 	      			<input type="hidden" name="token" value="<?= $_SESSION['token']?>">
+=======
+>>>>>>> 71ccd530bbffe79d397c55a738806da5f65fe25b
 	     		</div>
     		</form>	
     	</div>
@@ -329,10 +336,17 @@
 			  if (willDelete) {
 
 				$.ajax ({
+<<<<<<< HEAD
 					url: "users",
 					type: "POST",
 					dataType: "text",
 					data: {action: "remove", user_id: id, token:'<?= $_SESSION['token']?>'},
+=======
+					url: "controlers/UserController.php",
+					type: "POST",
+					dataType: "text",
+					data: {action: "remove", user_id: id},
+>>>>>>> 71ccd530bbffe79d397c55a738806da5f65fe25b
 					success: function(json) {
 						console.log(json);
 
