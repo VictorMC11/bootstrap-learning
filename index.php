@@ -48,6 +48,26 @@
     			<li class="breadcrumb-item active" aria-current="page">Inicio</li>
   			</ol>
 		</nav>
+
+		<?php if(isset($_SESSION['status'])&&$_SESSION['status']=="success"):?>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+			  <strong>Correcto!</strong><?=$_SESSION['message']?>. 
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		<?php unset($_SESSION['status']);?>
+		<?php endif ?>
+
+		<?php if(isset($_SESSION['status'])&&$_SESSION['status']=="error"):?>
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  <strong>Error!</strong><?=$_SESSION['message']?>. 
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		<?php unset($_SESSION['status']);?>
+		<?php endif ?>
 		
 		<div class="jumbotron">
 		  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -126,7 +146,7 @@
 				<div class="card mb-14">
   					<div class="card-header">
    					 Lista de usuarios registrados
-   					 <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn-primary float-right">Añadir Usuario</button>
+   					 <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn-primary float-right" onclick="add()" >Añadir Usuario</button>
   					</div>
   					<div class="card-body">
    						<table class="table table-striped table-bordered">
@@ -140,16 +160,38 @@
 						    </tr>
 						  </thead>
 						  <tbody>
+						  	<?php if(isset($users)&& count($users)>0): ?>
+						  	<?php foreach($users as $user): ?>
 						    <tr>
-						      <th scope="row">1</th>
-						      <td>Mark</td>
-						      <td>Otto@example.com</td>
-						      <td>@mdo</td>
+						      <th scope="row">
+						      	<?= $user['id'] ?>
+						      </th>
 						      <td>
-						      	<button type="button" class="btn btn-warning"><i class="fa fa-pencil">Editar</i></button>
-						      	<button onclick="remove(1)" type="button" class="btn btn-danger"><i class="fa fa-trash">Eliminar</i></button>
+						      	<?= $user['nombre'] ?>
+						      </td>
+						      <td>
+						      	<a href="malito:<?=$user['email']?>">
+						      	<?= $user['correo'] ?>
+						      	</a>
+						      </td>
+						      <td>
+						      	<?php if($user['status']): ?>
+						      		<span class="badge badge-success">
+						      			Activo
+						      		</span>	
+						      	<?php else: ?>	
+						      		<span class="badge badge-warining">
+						      			Inactivo
+						      		</span>	
+						      	<?php endif ?>
+						      </td>
+						      <td>
+						      	<button data-info='<?=json_encode($user) ?>'data-toggle="modal" data-target="#staticBackdrop" type="button" class="btn btn-warning" onclick="editar(this)" id="editar" ><i class="fa fa-pencil">Editar</i></button>
+						      	<button onclick="remove(<?= $user['id']?>,this)" type="button" class="btn btn-danger"><i class="fa fa-trash">Eliminar</i></button>
 						      </td>
 						    </tr>
+							<?php endforeach ?>
+						  	<?php endif ?>
 						  </tbody>
 						</table>
   					</div>
@@ -197,7 +239,7 @@
          		<span aria-hidden="true">&times;</span>
        	 	</button>
      	 	</div>
-     	 	<form onsubmit="return validateRegister()">
+     	 	<form method="POST" id="myForm" action="users" onsubmit="return validateRegister()">
 	     		<div class="modal-body">
 	       			<div class="form-group">
 					    <label for="name">Nombre completo</label>
@@ -206,7 +248,7 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i>
     						</span>
   							</div>
-  						<input type="text" class="form-control" id="name" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+  						<input type="text" class="form-control" id="name" name="name" placeholder="Username" aria-label="Username" requiered="" aria-describedby="basic-addon1">
 						</div>
 					  </div>
 					  <div class="form-group">
@@ -216,7 +258,7 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i>
     						</span>
   							</div>
-  						<input type="email" class="form-control" id="email" placeholder="example@hotmail.com" aria-label="correo" aria-describedby="basic-addon1">
+  						<input type="email" class="form-control" id="email" name="email" placeholder="example@hotmail.com" required="" aria-label="correo" aria-describedby="basic-addon1">
 						</div>
 					  </div>
 					  <div class="form-group">
@@ -226,7 +268,7 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i>
     						</span>
   							</div>
-  						<input type="password" class="form-control" id="pass1"placeholder="*******" aria-label="pass" aria-describedby="basic-addon1">
+  						<input type="password" class="form-control" name="pass1" id="pass1"placeholder="*******" required="" aria-label="pass" aria-describedby="basic-addon1">
 						</div>
 					  </div>
 					   <div class="form-group">
@@ -236,13 +278,16 @@
     						<span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i>
     						</span>
   							</div>
-  						<input type="password" class="form-control" id="pass2"placeholder="*******" aria-label="pass2" aria-describedby="basic-addon1">
+  						<input type="password" class="form-control" name="pass2" id="pass2"placeholder="*******" aria-label="pass2" aria-describedby="basic-addon1">
 						</div>
 					  </div>		 
 	      		</div>
 	     		<div class="modal-footer">
 	       			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-	      			<button type="submit" class="btn btn-primary">Ok</button>
+	      			<button type="submit" class="btn btn-primary">Guardar</button>
+	      			<input type="hidden" name="action" id="action" value="store">
+	      			<input type="hidden" name="id" id="id">
+	      			<input type="hidden" name="token" value="<?= $_SESSION['token']?>">
 	     		</div>
     		</form>	
     	</div>
@@ -255,7 +300,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript">
 		function validateRegister(){
 			if($("#pass1").val() == $("#pass2").val()){
@@ -264,27 +309,67 @@
 				$("#pass1").addClass('is-invalid');
 				$("#pass2").addClass('is-invalid');
 				swal("Contraseña erronea", "Vuelva a escribir su contraseña", "error");
+				console.log($("pass1").val());
+				console.log($("pass2").val());
 
 				return false;
 			}
 		}
-		function remove(id){
+		
+		function remove(id, target) {
 			swal({
-			  title: "¿Estas seguro?",
-			  text: "Una vez eliminado, ya no podrá recuperarlo.",
+			  title: "¿Esta seguro de eliminar el usuario?",
+			  text: "Una vez eliminado no podrá recuperarlo.",
 			  icon: "warning",
 			  buttons: true,
 			  dangerMode: true,
-			  buttons:["Cancelar", "Eliminar"],
+			  buttons: ["Cancelar", "Eliminar"]
 			})
 			.then((willDelete) => {
 			  if (willDelete) {
-			    swal("¡Ha sido eliminado con éxito!", {
-			      icon: "success",
-			    });
+
+				$.ajax ({
+					url: "users",
+					type: "POST",
+					dataType: "text",
+					data: {action: "remove", user_id: id, token:'<?= $_SESSION['token']?>'},
+					success: function(json) {
+						console.log(json);
+
+						swal("Tu usuario ha sido eliminado.", {
+					    	icon: "success",
+					    });
+					    $(target).parent().parent().remove();
+					},
+					error: function(xhr, status) {
+						console.log(xhr);
+						console.log(status);
+					}
+				});
+
+			  } else {
+			    swal("Tu usuario no ha sido eliminado.");
 			  }
 			});
 		}
+
+		function editar(target){
+			var info = $(target).data('info');
+
+			$("#name").val(info.nombre);
+			$("#email").val(info.correo);
+			$("#pass1").val(info.password);
+			$("#pass2").val(info.password);
+			$("#id").val(info.id);
+
+			$("#action").val('update');
+		}
+
+		function add(){
+			$("#action").val('store');
+			document.getElementById("myForm").reset(); 
+		}
+
 	</script>
 
 </body>
