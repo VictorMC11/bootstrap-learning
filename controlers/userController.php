@@ -3,7 +3,6 @@
     include_once "config.php";
     include_once "connectionController.php";
 
-<<<<<<< HEAD
     if(isset($_POST) && isset($_POST['action'])){   
         if($_POST['token'] == $_SESSION['token']){
             $userController = new UserController();     
@@ -42,37 +41,6 @@
             echo json_encode($respuesta);
         }
         
-=======
-    if(isset($_POST) && isset($_POST['action'])){
-        $userController = new UserController();     
-        switch ($_POST['action']) {
-            case 'store':
-
-                    $name = strip_tags($_POST['name']);
-                    $email = strip_tags($_POST['email']);
-                    $pass = strip_tags($_POST['pass1']);
-
-                    $userController->store($name,$email,$pass);
-
-            break;
-
-            case 'update':
-
-                    $name = strip_tags($_POST['name']);
-                    $email = strip_tags($_POST['email']);
-                    $pass = strip_tags($_POST['pass1']);
-                    $id = strip_tags($_POST['id']);
-
-                    $userController->update($name,$email,$pass, $id);
-
-            break;
-
-            case 'remove':
-                   $id = strip_tags($_POST['user_id']);
-                   echo json_encode($userController->remove($id));
-            break;
-        }
->>>>>>> 71ccd530bbffe79d397c55a738806da5f65fe25b
     }
 
     Class UserController{
