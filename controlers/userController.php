@@ -26,6 +26,11 @@
                     $userController->update($name,$email,$pass, $id);
 
             break;
+
+            case 'remove':
+                   $id = strip_tags($_POST['user_id']);
+                   echo json_encode($userController->remove($id));
+            break;
         }
     }
 
@@ -83,6 +88,45 @@
 
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
 
+            }
+        }
+
+        public function remove($id){
+            $con = connect();
+            if(!$con->connect_error){
+
+                if($id!=""){
+                    $query = "delete from users where id = ?";
+                    $prepared_query = $con->prepare($query);
+                    $prepared_query->bind_param('i',$id);
+                    if($prepared_query->execute()){
+                       
+                        $respuesta = array(
+                        'status'=>"success",
+                        'message'=> "El registro se ha eliminado."
+                    );
+                    return $respuesta;
+                        
+                    }else{
+                        $respuesta= array(
+                        'status'=>"error",
+                        'message'=> "El registro no se ha eliminado."
+                    );
+                    return $respuesta;
+                    }
+                }else{
+                    $respuesta= array(
+                        'status'=>"error",
+                        'message'=> "Verifique la información enviada."
+                    );
+                    return $respuesta;
+                }
+            }else{
+                    $respuesta= array(
+                        'status'=>"error",
+                        'message'=> "Error durante la conexión."
+                    );
+                    return $respuesta;
             }
         }
 
